@@ -1,0 +1,2 @@
+docker stop liberty-heat
+docker commit -m "Liberty Openstack with just keystone and Heat" -a "Praveen Yalagandula" liberty-heat ypraveen/liberty-heat:v7

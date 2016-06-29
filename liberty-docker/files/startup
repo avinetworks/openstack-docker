@@ -13,5 +13,5 @@ service glance-api restart
 service heat-api restart
 service heat-api-cfn restart
 service heat-engine restart
-/bin/bash /root/setup-avi-heat
+/bin/bash /root/files/setup-avi-heat
 sleep infinity

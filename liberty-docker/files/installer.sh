@@ -1,3 +1,10 @@
+set -x
+set -e
+
+cp /root/files/demo-openrc.sh /root/
+cp /root/files/admin-openrc.sh /root/
+source /root/admin-openrc.sh
+
 apt-get update
 apt-get --yes install software-properties-common
 add-apt-repository -y cloud-archive:liberty
@@ -48,14 +55,10 @@ OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 opens
 OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 openstack role create user
 OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 openstack role add --project demo --user demo user
 
-cp /root/files/demo-openrc.sh /root/
-cp /root/files/admin-openrc.sh /root/
-
 mysql -u root --password="avi123" -e "CREATE DATABASE heat;" 
 mysql -u root --password="avi123" -e "GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'localhost' IDENTIFIED BY 'avi123';"
 mysql -u root --password="avi123" -e "GRANT ALL PRIVILEGES ON heat.* TO 'heat'@'%' IDENTIFIED BY 'avi123';"
 
-source /root/admin-openrc.sh
 echo "127.0.0.1  openstack-controller" >> /etc/hosts
 openstack user create --domain default --password avi123 heat
 openstack role add --project service --user heat admin
@@ -96,7 +99,7 @@ openstack endpoint create --region RegionOne network internal http://openstack-c
 openstack endpoint create --region RegionOne network admin http://openstack-controller:9696
 apt-get -y install neutron-server neutron-plugin-ml2 neutron-plugin-linuxbridge-agent neutron-dhcp-agent neutron-metadata-agent python-neutronclient conntrack
 cp /root/files/neutron.conf /etc/neutron/
-cp /root/files/ml2-conf.ini /etc/neutron/plugins/ml2/
+cp /root/files/ml2_conf.ini /etc/neutron/plugins/ml2/
 su -s /bin/sh -c "neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head" neutron
 service neutron-server restart
 
@@ -106,7 +109,7 @@ mysql -u root --password="avi123" -e "CREATE DATABASE nova;"
 mysql -u root --password="avi123" -e "GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY 'avi123';"
 mysql -u root --password="avi123" -e "GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY 'avi123';"
 
-source admin-openrc.sh
+source /root/admin-openrc.sh
 openstack user create --domain default --password avi123 nova
 openstack role add --project service --user nova admin
 openstack service create --name nova --description "OpenStack Compute" compute
@@ -124,7 +127,7 @@ mysql -u root --password="avi123" -e "CREATE DATABASE glance;"
 mysql -u root --password="avi123" -e "GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY 'avi123';"
 mysql -u root --password="avi123" -e "GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY 'avi123';"
 
-source admin-openrc.sh
+source /root/admin-openrc.sh
 openstack user create --domain default --password avi123 glance
 openstack role add --project service --user glance admin
 

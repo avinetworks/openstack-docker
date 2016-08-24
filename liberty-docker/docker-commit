@@ -1,2 +1,2 @@
-docker stop liberty-heat
-docker commit -m "Liberty Openstack with just keystone and Heat" -a "Praveen Yalagandula" liberty-heat ypraveen/liberty-heat:v7
+docker stop liberty-docker
+docker commit -m "Liberty Openstack with keystone, heat, neutron server, nova api, glance api and registry" -a "Praveen Yalagandula" liberty-docker ypraveen/liberty-docker:v7

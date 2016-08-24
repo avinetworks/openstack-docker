@@ -2,8 +2,9 @@ set -x
 
 # clone avi-heat
 cd /root
-git clone https://github.com/avinetworks/avi-heat
+git clone $HEAT_REPO
 cd avi-heat
+git checkout $HEAT_BRANCH
 python setup.py sdist
 pip install dist/*tar.gz
 

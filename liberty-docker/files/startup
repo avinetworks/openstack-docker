@@ -1,5 +1,5 @@
 set -x
-echo "127.0.0.1 openstack-controller" >> /etc/hosts
+# echo "127.0.0.1 openstack-controller" >> /etc/hosts
 service mysql restart
 mysql -u root --password=avi123 keystone -e "update endpoint set url=replace(url,'openstack-controller','${OSC_IP}')"
 service memcached restart
@@ -10,6 +10,7 @@ service apache2 restart
 service neutron-server restart
 service nova-api restart
 service glance-api restart
+service glance-registry restart
 service heat-api restart
 service heat-api-cfn restart
 service heat-engine restart

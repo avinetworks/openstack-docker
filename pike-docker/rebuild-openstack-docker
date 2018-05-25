@@ -1,0 +1,5 @@
+set -x
+docker stop ocata-docker
+docker rm ocata-docker
+#docker rmi ypraveen/ocata
+docker build -t ypraveen/ocata -f ./Dockerfile .

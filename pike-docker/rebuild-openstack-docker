@@ -1,5 +1,5 @@
 set -x
-docker stop ocata-docker
-docker rm ocata-docker
-#docker rmi ypraveen/ocata
-docker build -t ypraveen/ocata -f ./Dockerfile .
+docker stop pike-docker
+docker rm pike-docker
+# docker rmi ypraveen/pike
+docker build -t ypraveen/pike -f ./Dockerfile .

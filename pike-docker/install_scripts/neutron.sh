@@ -5,7 +5,7 @@ source /root/admin-openrc.sh
 echo "127.0.0.1  openstack-controller" >> /etc/hosts
 export DEBIAN_FRONTEND=noninteractive
 service mysql restart
-service rabbitmq-server start
+service rabbitmq-server restart
 service memcached restart
 service apache2 restart
 

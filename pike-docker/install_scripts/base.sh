@@ -8,3 +8,6 @@ add-apt-repository -y cloud-archive:pike
 apt-get update && apt-get -y dist-upgrade
 apt-get install -y python-openstackclient  python-pip git
 apt-get install -y ssh-client
+
+# Following packages needed for debugging
+apt-get install -y net-tools vim

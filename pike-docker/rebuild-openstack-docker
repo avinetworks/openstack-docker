@@ -1,0 +1,5 @@
+set -x
+docker stop pike-docker
+docker rm pike-docker
+# docker rmi ypraveen/pike
+docker build -t ypraveen/pike -f ./Dockerfile .

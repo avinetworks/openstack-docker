@@ -1,0 +1,5 @@
+set -x
+docker stop queens-docker
+docker rm queens-docker
+# docker rmi ypraveen/queens
+docker build -t ypraveen/queens -f ./Dockerfile .

@@ -51,11 +51,11 @@ rm -f /var/lib/keystone/keystone.db
 #OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 openstack user create --domain default --password avi123 admin
 #OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 openstack role create admin
 #OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 openstack role add --project admin --user admin admin
-OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 openstack project create --domain default   --description "Service Project" service
-OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 openstack project create --domain default   --description "Demo Project" demo
-OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 openstack user create --domain default   --password avi123 demo
-OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 openstack role create user
-OS_TOKEN=avi123 OS_URL=http://localhost:35357/v3 OS_IDENTITY_API_VERSION=3 openstack role add --project demo --user demo user
+OS_TOKEN=avi123 OS_URL=http://localhost:5000/v3 OS_IDENTITY_API_VERSION=3 openstack project create --domain default   --description "Service Project" service
+OS_TOKEN=avi123 OS_URL=http://localhost:5000/v3 OS_IDENTITY_API_VERSION=3 openstack project create --domain default   --description "Demo Project" demo
+OS_TOKEN=avi123 OS_URL=http://localhost:5000/v3 OS_IDENTITY_API_VERSION=3 openstack user create --domain default   --password avi123 demo
+OS_TOKEN=avi123 OS_URL=http://localhost:5000/v3 OS_IDENTITY_API_VERSION=3 openstack role create user
+OS_TOKEN=avi123 OS_URL=http://localhost:5000/v3 OS_IDENTITY_API_VERSION=3 openstack role add --project demo --user demo user
 
 # install heat
 mysql -u root --password="avi123" -e "CREATE DATABASE heat;" 

@@ -1,0 +1,5 @@
+set -x
+docker stop queens-docker
+docker rm queens-docker
+# docker rmi avinetworks/queens-heat
+docker build -t avinetworks/queens-heat -f ./Dockerfile .

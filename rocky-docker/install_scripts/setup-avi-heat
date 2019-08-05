@@ -8,7 +8,7 @@ git checkout $HEAT_BRANCH
 python setup.py sdist
 pip install dist/*tar.gz
 
-sed -i 's/avi_controller=/avi_controller='"$AVI_IP"'/' /etc/heat/heat.conf
+# sed -i 's/avi_controller=/avi_controller='"$AVI_IP"'/' /etc/heat/heat.conf
 sed -i '1 a plugin_dirs = "/usr/local/lib/python2.7/dist-packages/avi/heat"' /etc/heat/heat.conf
 
 pkill -9 heat-engine

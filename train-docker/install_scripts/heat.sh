@@ -30,7 +30,7 @@ openstack role add --domain heat --user heat_domain_admin admin
 openstack role create heat_stack_owner
 openstack role add --project demo --user demo heat_stack_owner
 openstack role create heat_stack_user
-apt-get install heat-api heat-api-cfn heat-engine   python-heatclient -y
+apt-get install heat-api heat-api-cfn heat-engine -y
 cp /root/install_scripts/heat.conf /etc/heat/
 su -s /bin/sh -c "heat-manage db_sync" heat
 

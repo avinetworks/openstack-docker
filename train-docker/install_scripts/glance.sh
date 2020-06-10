@@ -26,7 +26,7 @@ openstack endpoint create --region RegionOne image public http://openstack-contr
 openstack endpoint create --region RegionOne image internal http://openstack-controller:9292
 openstack endpoint create --region RegionOne image admin http://openstack-controller:9292
 
-apt-get -y install glance python-glanceclient
+apt-get -y install glance
 cp /root/install_scripts/glance-api.conf /etc/glance/
 cp /root/install_scripts/glance-registry.conf /etc/glance/
 su -s /bin/sh -c "glance-manage db_sync" glance

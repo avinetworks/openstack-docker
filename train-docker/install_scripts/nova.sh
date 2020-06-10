@@ -50,7 +50,7 @@ openstack endpoint create --region RegionOne compute public http://openstack-con
 openstack endpoint create --region RegionOne compute internal http://openstack-controller:8774/v2.1
 openstack endpoint create --region RegionOne compute admin http://openstack-controller:8774/v2.1
 
-apt-get -y install nova-api nova-conductor nova-novncproxy nova-scheduler python-novaclient
+apt-get -y install nova-api nova-conductor nova-novncproxy nova-scheduler
 cp /root/install_scripts/nova.conf /etc/nova/
 su -s /bin/sh -c "nova-manage api_db sync" nova
 su -s /bin/sh -c "nova-manage cell_v2 map_cell0" nova

@@ -1,0 +1,5 @@
+set -x
+docker stop newton-heat
+docker rm newton-heat
+docker rmi avinetworks/newton-heat
+docker build -t avinetworks/newton-heat -f ./Dockerfile .

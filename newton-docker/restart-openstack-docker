@@ -1,0 +1,13 @@
+set -x
+docker stop newton-heat
+docker rm newton-heat
+
+docker run --name=newton-heat -p 9292:9292 -p 35357:35357 \
+    -p 8774:8774 -p 5000:5000 -p 8004:8004 -p 9696:9696 \
+    -e OSC_IP=10.79.170.177 -e AVI_IP=10.79.109.32 \
+    -e HEAT_REPO='https://github.com/avinetworks/avi-heat' \
+    -e HEAT_BRANCH=master -d -t -i avinetworks/newton-heat \
+    /bin/bash -c "/root/files/startup"
+
+docker logs -f newton-heat
+# docker exec -it newton-heat bash

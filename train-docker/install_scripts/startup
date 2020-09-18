@@ -18,8 +18,12 @@ service neutron-server restart
 service nova-api restart
 service glance-api restart
 service glance-registry restart
+
+sed -i "/metadata/s/localhost/$OSC_IP/g" /etc/heat/heat.conf
+sed -i "/waitcondition/s/localhost/$OSC_IP/g" /etc/heat/heat.conf
 service heat-api restart
 service heat-api-cfn restart
 service heat-engine restart
+
 /bin/bash /root/install_scripts/setup-avi-heat
 sleep infinity

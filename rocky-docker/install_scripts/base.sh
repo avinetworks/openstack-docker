@@ -1,7 +1,7 @@
 set -x
 set -e
 
-apt-get update
+apt-get --yes update
 export DEBIAN_FRONTEND=noninteractive
 apt-get --yes install software-properties-common
 add-apt-repository -y cloud-archive:rocky

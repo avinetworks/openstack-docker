@@ -1,6 +1,9 @@
 set -x
 # echo "127.0.0.1 openstack-controller" >> /etc/hosts
 service mariadb restart
+while [ $? -ne 0 ]; do
+    service mariadb restart
+done
 mysql -u root --password=avi123 keystone -e "update endpoint set url=replace(url,'openstack-controller','${OSC_IP}')"
 service memcached restart
 service rabbitmq-server restart

@@ -4,7 +4,6 @@ service mysql restart
 while [ $? -ne 0 ]; do
     service mysql restart
 done
-while [ $? -ne 0 ]; do
 mysql -u root --password=avi123 keystone -e "update endpoint set url=replace(url,'openstack-controller','${OSC_IP}')"
 service memcached restart
 service rabbitmq-server restart
@@ -14,6 +13,9 @@ done
 rabbitmqctl add_user openstack avi123
 rabbitmqctl set_permissions openstack ".*" ".*" ".*"
 service apache2 restart
+while [ $? -ne 0 ]; do
+    service apache2 restart
+done
 service neutron-server restart
 service nova-api restart
 service glance-api restart

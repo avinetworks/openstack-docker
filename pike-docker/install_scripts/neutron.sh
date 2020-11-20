@@ -5,8 +5,16 @@ source /root/admin-openrc.sh
 echo "127.0.0.1  openstack-controller" >> /etc/hosts
 export DEBIAN_FRONTEND=noninteractive
 service mysql restart
+set +e
+service rabbitmq-server stop
+service rabbitmq-server start
+set -e
 service rabbitmq-server restart
 service memcached restart
+set +e
+service apache2 stop
+service apache2 start
+set -e
 service apache2 restart
 
 # add neutron service

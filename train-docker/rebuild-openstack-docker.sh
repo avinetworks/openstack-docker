@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -x
 docker stop train-heat
 docker rm train-heat

@@ -21,7 +21,11 @@ service mysql restart
 
 # install rabbitmq
 apt-get -y install rabbitmq-server
+set +e
+service rabbitmq-server stop
 service rabbitmq-server start
+set -e
+service rabbitmq-server restart
 rabbitmqctl add_user openstack avi123
 rabbitmqctl set_permissions openstack ".*" ".*" ".*"
 mysql -u root --password="avi123" -e "CREATE DATABASE keystone;"

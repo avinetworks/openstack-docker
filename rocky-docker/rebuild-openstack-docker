@@ -1,5 +1,5 @@
 set -x
 docker stop rocky-heat
 docker rm rocky-heat
-# docker rmi avinetworks/rocky-heat
+docker rmi avinetworks/rocky-heat
 docker build -t avinetworks/rocky-heat -f ./Dockerfile .

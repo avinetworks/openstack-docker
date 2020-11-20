@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -x
 docker stop stein-heat
 docker rm stein-heat

@@ -1,6 +1,0 @@
-set -x
-docker stop rocky-heat
-docker rm rocky-heat
-docker run --name=rocky-heat -p 9292:9292 -p 35357:35357 -p 8774:8774 -p 5000:5000 -p 8004:8004 -p 9696:9696 -e OSC_IP=10.10.25.200 -e AVI_IP=10.10.25.201 -d -t -i avinetworks/rocky-heat:latest /bin/bash -c "sleep infinity"
-# docker logs -f rocky-heat
-docker exec -it rocky-heat bash

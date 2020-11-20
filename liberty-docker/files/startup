@@ -1,9 +1,15 @@
 set -x
 # echo "127.0.0.1 openstack-controller" >> /etc/hosts
 service mysql restart
+while [ $? -ne 0 ]; do
+    service mysql restart
+done
 mysql -u root --password=avi123 keystone -e "update endpoint set url=replace(url,'openstack-controller','${OSC_IP}')"
 service memcached restart
 service rabbitmq-server restart
+while [ $? -ne 0 ]; do
+    service rabbitmq-server restart
+done
 rabbitmqctl add_user openstack avi123
 rabbitmqctl set_permissions openstack ".*" ".*" ".*"
 service apache2 restart

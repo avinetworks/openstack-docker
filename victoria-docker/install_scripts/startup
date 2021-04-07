@@ -1,0 +1,32 @@
+set -x
+# echo "127.0.0.1 openstack-controller" >> /etc/hosts
+service mariadb restart
+while [ $? -ne 0 ]; do
+    service mariadb restart
+done
+mysql -u root --password=avi123 keystone -e "update endpoint set url=replace(url,'openstack-controller','${OSC_IP}')"
+service memcached restart
+service rabbitmq-server restart
+while [ $? -ne 0 ]; do
+    service rabbitmq-server restart
+done
+rabbitmqctl add_user openstack avi123
+rabbitmqctl set_permissions openstack ".*" ".*" ".*"
+service rabbitmq-server restart
+while [ $? -ne 0 ]; do
+    service rabbitmq-server restart
+done
+service apache2 restart
+service neutron-server restart
+service nova-api restart
+service glance-api restart
+service glance-registry restart
+
+sed -i "/metadata/s/localhost/$OSC_IP/g" /etc/heat/heat.conf
+sed -i "/waitcondition/s/localhost/$OSC_IP/g" /etc/heat/heat.conf
+service heat-api restart
+service heat-api-cfn restart
+service heat-engine restart
+
+/bin/bash /root/install_scripts/setup-avi-heat
+sleep infinity

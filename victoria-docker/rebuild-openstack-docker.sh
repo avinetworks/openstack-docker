@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 set -x
-docker stop ussuri-heat
-docker rm ussuri-heat
-docker rmi avinetworks/ussuri-heat
-docker build -t avinetworks/ussuri-heat -f ./Dockerfile .
+docker stop victoria-heat
+docker rm victoria-heat
+docker rmi avinetworks/victoria-heat
+docker build -t avinetworks/victoria-heat -f ./Dockerfile .

@@ -1,5 +1,5 @@
 FROM ubuntu:20.04
-MAINTAINER Rishabh Baranwal <rishabh.baranwal@avinetworks.com>
+MAINTAINER Manikanta Pagadala <manikantap@avinetworks.com>
 
 ADD install_scripts/base.sh /root/install_scripts/base.sh
 RUN /bin/bash /root/install_scripts/base.sh
